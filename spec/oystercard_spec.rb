@@ -1,3 +1,3 @@
-# require './lib/oystercard'
+require './lib/oystercard'
 describe Oystercard do
 end
