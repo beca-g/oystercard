@@ -23,23 +23,26 @@ class Oystercard
     @balance += value
   end
 
-  def deduct(value)
-    @balance -= value
-  end
-
   def in_journey?
     @entry_station != nil
   end
-
+  
   def touch_in(station)
     fail 'Unable to travel, balance less than £1' if lack_of_funds
 
     @entry_station = station
     @travelling = true
   end
-
+  
   def touch_out
+    @balance -= 1
     @travelling = false
   end
   
+  private 
+  
+  def deduct(value)
+    @balance -= value
+  end
+
 end
