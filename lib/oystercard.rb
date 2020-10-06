@@ -29,4 +29,8 @@ class Oystercard
     @travelling = true
   end
 
+  def touch_out
+    @travelling = false
+  end
+  
 end

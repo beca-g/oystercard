@@ -31,10 +31,17 @@ describe Oystercard do
   end
 
   describe '#touch_in' do
-    it 'updat4es @travelling to true' do
+    it 'updates @travelling to true' do
       subject.touch_in
 
       expect(subject.travelling).to eq true
+    end
+  end
+
+  describe '#touch_out' do
+    it 'updates @travelling to false' do
+      subject.touch_out
+      expect(subject.travelling).to eq false
     end
   end
 
