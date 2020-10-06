@@ -48,6 +48,10 @@ describe Oystercard do
       subject.touch_out
       expect(subject.travelling).to be false
     end
+
+    it 'deduces the minimum fare from @balance' do
+    expect { subject.touch_out }.to change { subject.balance }.by -1
+    end
   end
 
 end

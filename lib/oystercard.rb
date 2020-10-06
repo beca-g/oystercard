@@ -37,7 +37,8 @@ class Oystercard
   end
 
   def touch_out
+    @balance -= 1
     @travelling = false
   end
-  
+
 end
