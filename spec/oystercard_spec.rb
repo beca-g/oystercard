@@ -22,4 +22,20 @@ describe Oystercard do
       expect { subject.deduct(10) }.to change { subject.balance }.by -10
     end
   end
+
+  describe '#injourney?' do 
+    it 'initially has in_journey? = false when created' do
+
+      expect(subject.in_journey?).to eq false
+    end
+  end
+
+  describe '#touch_in' do
+    it 'updat4es @travelling to true' do
+      subject.touch_in
+
+      expect(subject.travelling).to eq true
+    end
+  end
+
 end
