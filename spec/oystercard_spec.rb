@@ -41,7 +41,7 @@ describe Oystercard do
   describe '#touch_out' do
     it 'updates @travelling to false' do
       subject.touch_out
-      expect(subject.travelling).to eq false
+      expect(subject.travelling).to be false
     end
   end
 
