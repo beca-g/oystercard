@@ -58,8 +58,8 @@ I need to have the correct fare calculated
 ```
 ## Contributor
 
-- Day 1 - Mace 
-- Day 2 - Meryl
+- Day 1 - Mace Akkari
+- Day 2 - Meryl Rastall
 - Day 3 - 
 - Day 4 - 
 - Day 5 - 
