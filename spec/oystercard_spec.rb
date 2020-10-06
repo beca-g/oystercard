@@ -16,13 +16,6 @@ describe Oystercard do
     end
   end
 
-  describe '#deduct()' do 
-    it 'deducts an amount from the balance' do
-     
-      expect { subject.deduct(10) }.to change { subject.balance }.by -10
-    end
-  end
-
   describe '#injourney?' do 
     it 'initially has in_journey? = false when created' do
 
@@ -54,9 +47,9 @@ describe Oystercard do
       expect(subject.travelling).to be false
     end
 
-    it 'deduces the minimum fare from @balance' do
-      expect { subject.touch_out }.to change { subject.balance }.by -1
-    end
+    
+    
+    
   end
 
 end

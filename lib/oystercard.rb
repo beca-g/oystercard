@@ -39,10 +39,10 @@ class Oystercard
     @travelling = false
   end
   
-  #private 
+  private 
   
-  def deduct(value)
-    @balance -= value
+  def deduct
+    @balance -= 1
   end
 
 end
