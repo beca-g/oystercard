@@ -32,9 +32,14 @@ describe Oystercard do
 
   describe '#touch_in' do
     it 'updates @travelling to true' do
+      subject.top_up(50)
       subject.touch_in
 
       expect(subject.travelling).to eq true
+    end
+
+    it 'raises an error if card balance is lower than £1' do
+      expect { subject.touch_in}.to raise_error 'Unable to travel, balance less than £1'
     end
   end
 
