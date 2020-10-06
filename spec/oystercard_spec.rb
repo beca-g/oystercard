@@ -33,13 +33,18 @@ describe Oystercard do
   describe '#touch_in' do
     it 'updates @travelling to true' do
       subject.top_up(50)
-      subject.touch_in
+      subject.touch_in("station")
 
       expect(subject.travelling).to eq true
     end
 
+    it 'checks that touch_in has updated the entry_station' do
+      subject.top_up(50)
+      expect { subject.touch_in("bank") }.to change { subject.entry_station }.to eq ("bank")
+    end
+
     it 'raises an error if card balance is lower than £1' do
-      expect { subject.touch_in}.to raise_error 'Unable to travel, balance less than £1'
+      expect { subject.touch_in("station")}.to raise_error 'Unable to travel, balance less than £1'
     end
   end
 

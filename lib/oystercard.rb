@@ -1,11 +1,12 @@
 class Oystercard
-  attr_reader :balance, :travelling
+  attr_reader :balance, :travelling, :entry_station
   MAX_VALUE = 90
   MIN_VALUE = 1
 
   def initialize
     @balance = 0
     @travelling = false
+    @entry_station = nil
   end  
 
   def max_value?(value)
@@ -30,9 +31,10 @@ class Oystercard
     @travelling
   end
 
-  def touch_in
+  def touch_in(station)
     fail 'Unable to travel, balance less than £1' if lack_of_funds
 
+    @entry_station = station
     @travelling = true
   end
 
