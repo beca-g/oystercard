@@ -5,7 +5,7 @@ A programme that emulates the 'Oystercard' used to travel on London's tube netwo
 
 ## User stories
 
-<span style="color:red; font-family:Georgia; font-size:2em;">red.</span>Here are the user stories you will be working on for this project:
+Here are the user stories you will be working on for this project:
 
 ```
 In order to use public transport
