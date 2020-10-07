@@ -1,18 +1,10 @@
----
-/* Whole document: */
-body{
-  font-family: Georgia;
-}
----
+# Oystercard Challenge.
 
-# Oystercard Challenge
+A programme that emulates the 'Oystercard' used to travel on London's tube network.  
 
-A programme that emulates the 'Oystercard' used to travel on London's tube network.
-
-
-## User stories
-
-<span style="color:red; font-family:Georgia; font-size:2em;">red.</span>Here are the user stories you will be working on for this project:
+## User stories   
+  
+Here are the user stories you will be working on for this project:
 
 ```
 In order to use public transport

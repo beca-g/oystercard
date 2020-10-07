@@ -7,7 +7,7 @@ class Oystercard
     @balance = 0
     @travelling = false
     @entry_station = nil
-  end  
+  end
 
   def max_value?(value)
     (@balance + value) > MAX_VALUE
@@ -17,8 +17,8 @@ class Oystercard
     @balance < MIN_VALUE
   end
 
-  def top_up(value) 
-    fail "unable to up by #{value}: over max limit" if max_value?(value)
+  def top_up(value)
+    raise "unable to up by #{value}: over max limit" if max_value?(value)
 
     @balance += value
   end
@@ -26,23 +26,22 @@ class Oystercard
   def in_journey?
     @entry_station != nil
   end
-  
+
   def touch_in(station)
-    fail 'Unable to travel, balance less than £1' if lack_of_funds
+    raise 'Unable to travel, balance less than £1' if lack_of_funds
 
     @entry_station = station
     @travelling = true
   end
-  
+
   def touch_out
     @balance -= 1
     @travelling = false
   end
-  
-  private 
-  
+
+  private
+
   def deduct
     @balance -= 1
   end
-
 end

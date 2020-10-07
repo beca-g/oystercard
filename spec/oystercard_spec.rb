@@ -4,7 +4,7 @@ describe Oystercard do
     it 'freshly initialized cards should have a balance of 0' do
       expect(subject.balance).to eq 0
     end
-  end 
+  end
 
   describe '#top_up' do
     it 'tops up the balance by value' do
@@ -12,13 +12,12 @@ describe Oystercard do
     end
 
     it 'tops up a maximum of £90' do
-      expect { subject.top_up(100) }.to raise_error "unable to up by 100: over max limit"
+      expect { subject.top_up(100) }.to raise_error 'unable to up by 100: over max limit'
     end
   end
 
-  describe '#injourney?' do 
+  describe '#injourney?' do
     it 'initially has in_journey? = false when created' do
-
       expect(subject.in_journey?).to eq false
     end
   end
@@ -26,18 +25,18 @@ describe Oystercard do
   describe '#touch_in' do
     it 'updates @travelling to true' do
       subject.top_up(50)
-      subject.touch_in("station")
+      subject.touch_in('station')
 
       expect(subject.travelling).to eq true
     end
 
     it 'checks that touch_in has updated the entry_station' do
       subject.top_up(50)
-      expect { subject.touch_in("bank") }.to change { subject.entry_station }.to eq ("bank")
+      expect { subject.touch_in('bank') }.to change { subject.entry_station }.to eq('bank')
     end
 
     it 'raises an error if card balance is lower than £1' do
-      expect { subject.touch_in("station")}.to raise_error 'Unable to travel, balance less than £1'
+      expect { subject.touch_in('station') }.to raise_error 'Unable to travel, balance less than £1'
     end
   end
 
@@ -46,10 +45,5 @@ describe Oystercard do
       subject.touch_out
       expect(subject.travelling).to be false
     end
-
-    
-    
-    
   end
-
 end
