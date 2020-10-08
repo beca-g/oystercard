@@ -48,6 +48,12 @@ describe Oystercard do
       expect(subject.travelling).to be false
     end
 
+    it 'on touch_out the balance is deducted by #min_value' do
+      subject.top_up(20)
+      subject.touch_in(station)
+      expect { subject.touch_out }.to change { subject.balance }.by (-Oystercard::MIN_VALUE)     
+    end
+
     it 'updates @entry_station to nil' do
       subject.top_up(20)
       subject.touch_in(station)

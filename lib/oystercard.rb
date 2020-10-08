@@ -35,14 +35,14 @@ class Oystercard
   end
 
   def touch_out
-    @balance -= 1
+    deduct(MIN_VALUE)
     @entry_station = nil
     @travelling = false
   end
 
   private
 
-  def deduct
-    @balance -= 1
+  def deduct(fare)
+    @balance -= fare
   end
 end
