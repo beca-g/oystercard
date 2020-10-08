@@ -25,38 +25,26 @@ describe Oystercard do
   end
 
   describe '#touch_in' do
-    it 'updates @travelling to true' do
-      subject.top_up(50)
-      subject.touch_in(station)
-
-      expect(subject.travelling).to eq true
-    end
-
     it 'checks that touch_in has updated the entry_station' do
       subject.top_up(50)
-      expect { subject.touch_in(station) }.to change { subject.entry_station }.to eq (station)
+      expect { subject.touch_in(:station) }.to change { subject.entry_station }.to eq (:station)
     end
 
     it 'raises an error if card balance is lower than £1' do
-      expect { subject.touch_in(station)}.to raise_error 'Unable to travel, balance less than £1'
+      expect { subject.touch_in(:station)}.to raise_error 'Unable to travel, balance less than £1'
     end
   end
 
   describe '#touch_out' do
-    it 'updates @travelling to false' do
-      subject.touch_out
-      expect(subject.travelling).to be false
-    end
-
     it 'on touch_out the balance is deducted by #min_value' do
       subject.top_up(20)
-      subject.touch_in(station)
+      subject.touch_in(:station)
       expect { subject.touch_out }.to change { subject.balance }.by (-Oystercard::MIN_VALUE)     
     end
 
     it 'updates @entry_station to nil' do
       subject.top_up(20)
-      subject.touch_in(station)
+      subject.touch_in(:station)
       subject.touch_out
       expect(subject.entry_station).to eq nil
     end
