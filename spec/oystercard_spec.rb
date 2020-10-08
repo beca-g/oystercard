@@ -5,6 +5,10 @@ describe Oystercard do
     it 'freshly initialized cards should have a balance of 0' do
       expect(subject.balance).to eq 0
     end
+    
+    it 'checks that the card has an empty journey list by default' do 
+      expect(subject.journeys).to eq []
+    end
   end 
 
   describe '#top_up' do
@@ -39,15 +43,23 @@ describe Oystercard do
     it 'on touch_out the balance is deducted by #min_value' do
       subject.top_up(20)
       subject.touch_in(:station)
-      expect { subject.touch_out }.to change { subject.balance }.by (-Oystercard::MIN_VALUE)     
+      expect { subject.touch_out(:station) }.to change { subject.balance }.by (-Oystercard::MIN_VALUE)     
     end
 
-    it 'updates @entry_station to nil' do
+    it 'updates @entry_station to nil once #touch_out' do
       subject.top_up(20)
       subject.touch_in(:station)
-      subject.touch_out
-      expect(subject.entry_station).to eq nil
+      subject.touch_out(:station)
+      expect(subject.entry_station).to be nil
     end
   end
 
+  describe '#current_journey' do
+    it 'touching in and out creates one journey' do
+      subject.top_up(20)
+      subject.touch_in(:station)
+      subject.touch_out(:station)
+      expect(subject.current_journey).to include(:entry_station, :exit_station)
+    end 
+  end
 end
