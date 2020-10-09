@@ -59,7 +59,7 @@ describe Oystercard do
       subject.top_up(20)
       subject.touch_in(:station)
       subject.touch_out(:station)
-      expect(subject.current_journey).to include(:entry_station, :exit_station)
+      expect(subject.journey).to include(:entry_station, :exit_station)
     end 
   end
 end
